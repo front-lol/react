@@ -1,5 +1,5 @@
 const React = require('react');
-const {Component} = React;
+const {Component, createRef} = React;
 
 class WordRelay extends Component{
     state = {
@@ -15,30 +15,38 @@ class WordRelay extends Component{
                 word: this.state.value,
                 value:''
             })
-            this.input.focus();
+            // this.input.focus();
+            // createRef
+            this.inputRef.current.focus();
         }
         else{
             this.setState({
                 result:'땡',
                 value:''
             })
-            this.input.focus();
+            // this.input.focus();
+            this.inputRef.current.focus();
         }
     };
     onChangeInput = (e) => {
         this.setState({ value:e.target.value })
     };
 
+    // prev ref
     onRefInput = (c) => {
         this.input = c;
     };
+    // createRef
+    inputRef = createRef()
 
     render() {
         return (
         <div>
             <div>{this.state.word}</div>
             <form onSubmit = {this.onSubmitForm}>
-                <input type="text" ref={this.onRefInput} value={this.state.value} onChange={this.onChangeInput} />
+                {/* prev ref */}
+                {/* : ref={this.onRefInput} */}
+                <input type="text" ref={this.inputRef} value={this.state.value} onChange={this.onChangeInput} />
                 <button>입력</button>
             </form>
             <div>{this.state.result}</div>
