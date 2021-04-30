@@ -14,7 +14,8 @@ module.exports ={
     // input
     entry: {
         // app: ['./4.client']
-        app: ['./5.client']
+        // app: ['./5.client']
+        app: ['./6.client']
 
     },
     module: {
